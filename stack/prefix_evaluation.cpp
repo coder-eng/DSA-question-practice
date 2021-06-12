@@ -6,7 +6,7 @@ using namespace std;
 class evaluations{
     public:
     stack<int>st;
-    int flag = 0;
+    int flag = 0,mul = 10;
     int ans(string s){
         for(int i = s.size()-1; i>=0; i--){
             
@@ -23,8 +23,11 @@ class evaluations{
                 }
                  flag = 1;
             }
-            else if(s[i] == ' ')
-            flag = 0;
+            else if(s[i] == ' '){
+                flag = 0;
+                mul = mul*10;
+            }
+            
             
             else{
                 int op1 = st.top();
