@@ -27,8 +27,7 @@ class evaluations{
                 flag = 0;
                 mul = mul*10;
             }
-            
-            
+             
             else{
                 int op1 = st.top();
                 st.pop();
