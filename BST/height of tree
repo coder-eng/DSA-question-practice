@@ -1,3 +1,4 @@
+// First method(iterative approach)
 int height(struct Node* node){
         // code here 
         queue<Node*>q;
@@ -24,3 +25,61 @@ int height(struct Node* node){
         }
         return h+1;
     }
+    
+  //second method(recursive aprroach)
+  int height(struct Node* node){
+        // code here 
+        queue<Node*>q;
+        int h = 0;
+        if(node==NULL)
+        return h;
+        
+        int l = height(node->left);
+        int r = height(node->right);
+        return max(l,r)+1;
+    }
+    
+    //third method(recursive approach)
+    //Function to find the height of a binary tree.
+    int height(struct Node* root){
+        // code here 
+        // empty tree has a height of 0
+    if (root == nullptr) {
+        return 0;
+    }
+ 
+    // create an empty queue and enqueue the root node
+    queue<Node*> q;
+    q.push(root);
+ 
+    Node* front = nullptr;
+    int height = 0;
+ 
+    // loop till queue is empty
+    while (!q.empty())
+    {
+        // calculate the total number of nodes at the current level
+        int size = q.size();
+ 
+        // process each node of the current level and enqueue their
+        // non-empty left and right child
+        while (size--)
+        {
+            front = q.front();
+            q.pop();
+ 
+            if (front->left) {
+                q.push(front->left);
+            }
+ 
+            if (front->right) {
+                q.push(front->right);
+            }
+        }
+ 
+        // increment height by 1 for each level
+        height++;
+    }
+ 
+    return height;
+}
