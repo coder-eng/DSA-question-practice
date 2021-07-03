@@ -1,0 +1,40 @@
+// 1st approach(recursive)
+   vector<int>v;
+    void inor(Node* root, vector<int> &v){
+        if(root==NULL)
+        return;
+        
+        inor(root->left,v);
+        v.push_back(root->data);
+        inor(root->right,v);
+        
+    }
+    vector<int> inOrder(Node* root) {
+        // Your code here
+        inor(root,v);
+        return v;
+        
+    }
+    
+//2nd approach(iterative)
+    vector<int> inOrder(Node* root) {
+        // Your code here
+        vector<int>v;
+        stack<Node*>s;
+        Node* current = root;
+        while(!s.empty() || current!=NULL){
+            if(current!=NULL){
+                s.push(current);
+                current = current->left;
+            }
+            else{
+                current = s.top();
+                s.pop();
+                v.push_back(current->data);
+                current = current->right;
+            }
+            
+            
+        }
+        return v;
+    }
