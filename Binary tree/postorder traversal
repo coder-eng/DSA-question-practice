@@ -20,3 +20,29 @@ vector <int> postOrder(Node* root)
 }
 
 // 2nd approach(iterative)
+vector <int> postOrder(Node* root)
+{
+  // Your code here
+   vector<int>v;
+   stack<Node*>q;
+   stack<int>s;
+   if(root==NULL)
+   return v;
+   q.push(root);
+   while(!q.empty()){
+       Node* current = q.top();
+       q.pop();
+       s.push(current->data);
+       
+       if(current->left)
+       q.push(current->left);
+       if(current->right)
+       q.push(current->right);
+       
+   }
+   while(!s.empty()){
+       v.push_back(s.top());
+       s.pop();
+   }
+        return v;
+}
