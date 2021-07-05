@@ -12,8 +12,7 @@
     vector<int> inOrder(Node* root) {
         // Your code here
         inor(root,v);
-        return v;
-        
+        return v;   
     }
     
 //2nd approach(iterative)
