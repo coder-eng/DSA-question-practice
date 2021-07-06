@@ -1,0 +1,17 @@
+ int sum(struct Node* node){
+        // code here 
+        int h = 0;
+        if(node==NULL)
+        return 0;
+        
+        int l = sum(node->left);
+        int r = sum(node->right);
+        int old = node->data;
+        node->data = l+r;
+        return node->data + old;;
+    }
+    void toSumTree(Node *node)
+    {
+        // Your code here
+        sum(node);
+    }
