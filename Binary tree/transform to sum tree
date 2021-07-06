@@ -4,10 +4,19 @@
         if(node==NULL)
         return 0;
         
+        // recursively convert the left and right subtree first before
+       // processing the root node
         int l = sum(node->left);
         int r = sum(node->right);
+        
+        // stores the current value of the root node
         int old = node->data;
+        
+        // update root to the sum of left and right subtree
         node->data = l+r;
+        
+        // return the updated value + the old value (sum of the tree rooted at
+    // the root node)
         return node->data + old;;
     }
     void toSumTree(Node *node)
