@@ -1,0 +1,39 @@
+#include<set>
+set<int>s1,s2;
+// storing all leaf in s2 and rest nodes in s1
+void inorder(Node* root){
+    if(root){
+        inorder(root->left);
+         if(!(root->left) && !(root->right))
+         s2.insert(root->data);
+         else
+         s1.insert(root->data);
+        inorder(root->right);
+    }
+}
+//helper function to check for each leaf node data is there data -1 and data+1 presenr or not in BST
+bool deadend(){
+    //bool flag = true;
+    //iterator it;
+    s1.insert(0);
+    for(const auto &n: s2){
+        s2.erase(n);
+        //if present then it contains dead end
+        if(s1.find(n-1)!=s1.end() && s1.find(n+1)!=s1.end())
+        return 1;
+        //cout<<'p'<<' ';
+        
+        
+    }
+    //cout<<endl;
+    s1.clear();
+    return 0;
+}
+
+bool isDeadEnd(Node *root)
+{
+    //Your code here
+    inorder(root);
+   // cout<<'p'<<endl;
+    return deadend();
+}
