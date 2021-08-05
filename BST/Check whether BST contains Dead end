@@ -37,3 +37,23 @@ bool isDeadEnd(Node *root)
    // cout<<'p'<<endl;
     return deadend();
 }
+
+//2nd method
+bool inorder(Node* root,int start,int end){
+    
+    if(!root)
+    return false;
+    if(start==end)
+    return true;
+    if(root){
+        bool l = inorder(root->left,start,(root->data)-1);
+        bool r = inorder(root->right,(root->data)+1,end);
+        return l||r;
+    }
+}
+
+bool isDeadEnd(Node *root)
+{
+    //Your code here
+    return inorder(root,1,INT_MAX);
+}
